@@ -1,5 +1,19 @@
 .App {
   text-align: center;
+
+}
+body{
+  background-size: cover;
+  height: 100%;
+}
+.navbar-container{
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+ 
+
 }
 
 .App-logo {
@@ -13,7 +27,7 @@
   }
 }
 
-.App-header {
+/* .App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -22,7 +36,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
+} */
 
 .App-link {
   color: #61dafb;
@@ -36,3 +50,100 @@
     transform: rotate(360deg);
   }
 }
+
+.nav-ul{
+  display: flex;
+  list-style: none;
+  margin: 25px;
+  
+}
+.nav-li{
+  font-size: 12px;
+}
+
+.nav-li a h2{
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  
+  
+}
+
+.nav-li a h2:hover{
+  background-color: black;
+}
+.navbar-btn--active{
+  border-bottom: 3px solid #29b6f6;
+  transition: border-bottom .5s ease-in-out;
+}
+.navbar-btn{
+  width: 300px;
+  display: block;
+  margin: auto;
+  cursor: pointer;
+  font-family: 'Architects Daughter', cursive;
+  transition: border-bottom .5s ease-in-out;
+ 
+}
+
+.home h2{
+  color: #fff;
+    font-family: Signika,sans-serif;
+    font-size: 3rem;
+    margin-left: 10%;
+    text-align: left;
+}
+h2{
+  font-family: 'Architects Daughter', cursive;
+  color:white
+}
+.topH2{
+  margin-bottom:0
+}
+.home{
+  margin-top: 15%;
+}
+.btnTrade{
+  left: 10%;
+  padding-top: 2%;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 50%;
+  width: 120px;
+}
+.btnTrade button{
+  background-color: #9f8643;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+  height: 40px;
+  padding: 0.35rem;
+  width: 140px;
+}
+
+fieldset {
+  font-size: 1.5rem;
+  font-weight: bolder;
+}
+
+fieldset input {
+  border-radius: 10px;
+  margin: 10px;
+}
+form {
+  width: 70%;
+  margin: auto;
+}
+body {
+  background-color: #E3E9D9;
+}
+label{
+  font-family: 'Architects Daughter', cursive;
+}
+.btn-danger{
+  margin-left: 15px;
+}
+
