@@ -114,7 +114,7 @@ h2{
   width: 120px;
 }
 .btnTrade button{
-  background-color: #9f8643;
+  background-color: #0b5d3a;
   border-radius: 8px;
   color: #fff;
   cursor: pointer;
@@ -123,6 +123,7 @@ h2{
   padding: 0.35rem;
   width: 140px;
 }
+
 
 fieldset {
   font-size: 1.5rem;
