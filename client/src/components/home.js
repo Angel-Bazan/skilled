@@ -25,7 +25,7 @@ const Home = ({setView}) => {
         <h2 className="topH2">Explore Trades</h2>
       </div>
       <div>
-        <h3 className="quote">{quote ? quote : null}</h3>
+        <h4 className="quote">{JSON.stringify(quote)}</h4>
       </div>
       <div className="btnTrade">
         {" "}

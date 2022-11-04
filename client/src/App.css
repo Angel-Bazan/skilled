@@ -3,6 +3,7 @@
 
 }
 body{
+  background: url(trade.png) no-repeat center center fixed;
   background-size: cover;
   height: 100%;
 }
@@ -113,6 +114,14 @@ h2{
   top: 50%;
   width: 120px;
 }
+.quote{
+  color: #fff;
+    font-family: Signika,sans-serif;
+    font-size: 1.5rem;
+    margin-left: 10%;
+    text-align: left;
+    width:40%;
+}
 .btnTrade button{
   background-color: #0b5d3a;
   border-radius: 8px;
@@ -122,6 +131,9 @@ h2{
   height: 40px;
   padding: 0.35rem;
   width: 140px;
+}
+.login{
+  margin-right: 34px;
 }
 .logout{
   margin-right: 34px;
@@ -148,5 +160,16 @@ label{
 }
 .btn-danger{
   margin-left: 15px;
+}
+.aboutText {
+  background-color: #175c48;
+  padding: 5%;
+  border-radius: 25px;
+  font-size: 1.75rem;
+}
+
+.about {
+  padding: 6%;
+  opacity: .90;
 }
 

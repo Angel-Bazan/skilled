@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Form from "./form";
+// import Form from "./form";
 import { API_URL } from "../constants";
 
 const Trades = () => {
@@ -102,7 +102,16 @@ const Trades = () => {
                   <br />
                 </div>
               </div>
+              <div className="video">
+              {/* <iframe src='https://www.youtube.com/embed/Cr8K88UcO0s'
+frameborder='0'
+allow='autoplay; encrypted-media'
+allowfullscreen
+title='video'
+/> */}
+              </div>
             </li>
+           
           );
         })}
       </ul>
@@ -155,7 +164,7 @@ const Trades = () => {
           Update User
         </button>
       </div> */}
-      <Form addTrade={addTrade} />
+      {/* <Form addTrade={addTrade} /> */}
     </section>
   );
 };

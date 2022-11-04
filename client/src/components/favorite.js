@@ -3,7 +3,7 @@ const Favorite = () => {
     return (
         <div className="top">
             <div>
-                <h2>Favorite Blogs</h2>
+                <h2></h2>
             </div>
         </div>
     )
