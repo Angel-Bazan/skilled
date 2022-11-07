@@ -25,6 +25,14 @@ app.get("/api/trade", cors(), async (req, res) => {
     return res.status(400).json({ e });
   }
 });
+app.get("/api/user", cors(), async (req, res) => {
+  try {
+    const { rows: users } = await db.query("SELECT * FROM users");
+    res.send(users);
+  } catch (e) {
+    return res.status(400).json({ e });
+  }
+});
 
 app.get("/api/join", cors(), async (req, res) => {
   try {
@@ -75,39 +83,39 @@ app.post("/api/blog", cors(), async (req, res) => {
   res.json(result.rows[0]);
 });
 
-// app.post("/api/favorite/:id", cors(), async (req, res) => {
-//   const blogId = req.params.id;
-//   const newFavorite = {
-//     // userId: req.body.users_id,
-//     userId: 1,
-//   };
-//   const existing = await db.query(
-//     "SELECT id FROM favorite_blogs WHERE blog_id = $1 and users_id = $2",
-//     [blogId, newFavorite.userId]
-//   );
-//   console.log(existing.rows);
-//   console.log([newFavorite.userId, newFavorite.blog]);
-//   // const result = await db.query(
-//   //   'INSERT INTO favorite_blogs(users_id, blog_id) VALUES($1, $2) RETURNING *',
-//   //   [newFavorite.userId, newFavorite.blog],
-//   // );
-//   // console.log(result.rows[0]);
-//   // res.json(result.rows[0]);
-//   if (existing.rows.length >= 1) {
-//     const nonExisting = await db.query(
-//       "DELETE FROM favorite_blogs WHERE id = $1",
-//       [existing.rows[0].id]
-//     );
-//   } else {
-//     const result = await db.query(
-//       "INSERT INTO favorite_blogs(users_id, blog_id) VALUES($1, $2) RETURNING *",
-//       [newFavorite.userId, blogId]
-//     );
-//     console.log(result.rows[0]);
+app.post("/api/favorite/:id", cors(), async (req, res) => {
+  const tradeId = req.params.id;
+  const newFavorite = {
+    // userId: req.body.users_id,
+    userId: 1,
+  };
+  const existing = await db.query(
+    "SELECT id FROM users_trades WHERE users_id = $1 and trade_id = $2",
+    [tradeId, newFavorite.userId]
+  );
+  console.log(existing.rows);
+  console.log([newFavorite.userId, newFavorite.blog]);
+  // const result = await db.query(
+  //   'INSERT INTO favorite_blogs(users_id, blog_id) VALUES($1, $2) RETURNING *',
+  //   [newFavorite.userId, newFavorite.blog],
+  // );
+  // console.log(result.rows[0]);
+  // res.json(result.rows[0]);
+  if (existing.rows.length >= 1) {
+    const nonExisting = await db.query(
+      "DELETE FROM users_trades WHERE id = $1",
+      [existing.rows[0].id]
+    );
+  } else {
+    const result = await db.query(
+      "INSERT INTO users_trades(users_id, trade_id) VALUES($1, $2) RETURNING *",
+      [newFavorite.userId, tradeId]
+    );
+    console.log(result.rows[0]);
    
-//   }
-//   res.json({key:'success'});
-// });
+  }
+  res.json({key:'success'});
+});
 
 app.delete("/api/trades/:id", async (req, res) => {
   const tradeId = req.params.id; //It has to match
@@ -149,6 +157,33 @@ app.delete("/api/trades/:id", async (req, res) => {
 //   }
 // });
 // // console.log that your server is up and running
+
+app.post('/api/me', cors(), async (req, res) => {
+  const newUser = {
+    lastname: req.body.family_name,
+    firstname: req.body.given_name,
+    email: req.body.email,
+    sub: req.body.sub
+
+  }
+  //console.log(newUser);
+
+  const queryEmail = 'SELECT * FROM users WHERE email=$1 LIMIT 1';
+  const valuesEmail = [newUser.email]
+  const resultsEmail = await db.query(queryEmail, valuesEmail);
+  if(resultsEmail.rows[0]){
+    console.log(`Thank you ${resultsEmail.rows[0].firstname} for coming back`)
+  } else{
+  const query = 'INSERT INTO users(lastname, firstname, email, sub) VALUES($1, $2, $3, $4) RETURNING *'
+  const values = [newUser.lastname, newUser.firstname, newUser.email, newUser.sub]
+  const result = await db.query(query, values);
+  console.log(result.rows[0]);
+
+  }
+
+});
+
+
  app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
  });

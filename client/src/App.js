@@ -1,6 +1,6 @@
 import "./App.css";
 import { useState } from "react";
-import Blogs from "./components/trades";
+import Trades from "./components/trades";
 import Navbar from "./components/public_navbar";
 import Favorite from "./components/favorite";
 import Form from "./components/form";
@@ -25,7 +25,7 @@ function App() {
             <Navbar setView={setView} />
             
             {view === "home" && <Home setView={setView} />}
-            {view === "trades" && <Blogs />}
+            {view === "trades" && <Trades />}
             <div className="container flex-grow-1"> </div>{" "}
           </div>
         </div>
@@ -35,7 +35,7 @@ function App() {
             <Navbar setView={setView} />
             {view === "favorite" && <Favorite />}
             {view === "home" && <Home setView={setView}/>}
-            {view === "trades" && <Blogs />}
+            {view === "trades" && <Trades />}
             {view === "about" && <About />}
             <div className="container flex-grow-1"> </div>{" "}
           </div>

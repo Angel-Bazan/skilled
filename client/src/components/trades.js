@@ -102,14 +102,7 @@ const Trades = () => {
                   <br />
                 </div>
               </div>
-              <div className="video">
-              {/* <iframe src='https://www.youtube.com/embed/Cr8K88UcO0s'
-frameborder='0'
-allow='autoplay; encrypted-media'
-allowfullscreen
-title='video'
-/> */}
-              </div>
+              
             </li>
            
           );
