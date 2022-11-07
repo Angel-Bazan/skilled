@@ -67,9 +67,9 @@ const Navbar = ({ setView }) => {
           </a>
         </li>
       </ul>
-      <div class="tab-content" id="myTabContent">
+      <div className="tab-content" id="myTabContent">
         <div
-          class="tab-pane fade show active"
+          className="tab-pane fade show active"
           id="home"
           role="tabpanel"
           aria-labelledby="home-tab"
@@ -77,7 +77,7 @@ const Navbar = ({ setView }) => {
           
         </div>
         <div
-          class="tab-pane fade show active"
+          className="tab-pane fade show active"
           id="create"
           role="tabpanel"
           aria-labelledby="create-tab"
@@ -85,7 +85,7 @@ const Navbar = ({ setView }) => {
           
         </div>
         <div
-          class="tab-pane fade show active"
+          className="tab-pane fade show active"
           id="favorites"
           role="tabpanel"
           aria-labelledby="favorites-tab"

@@ -97,7 +97,7 @@ const Trades = () => {
                   <br />
                   <button>
                 
-                    <span class="material-symbols-outlined" onClick={() => favoriteTrade(trade.id)}>favorite</span>
+                    <span className="material-symbols-outlined" onClick={() => favoriteTrade(trade.id)}>favorite</span>
                   </button>
                   <br />
                 </div>
