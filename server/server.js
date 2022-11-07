@@ -25,6 +25,14 @@ app.get("/api/trade", cors(), async (req, res) => {
     return res.status(400).json({ e });
   }
 });
+app.get("/api/user", cors(), async (req, res) => {
+  try {
+    const { rows: users } = await db.query("SELECT * FROM users");
+    res.send(users);
+  } catch (e) {
+    return res.status(400).json({ e });
+  }
+});
 
 app.get("/api/join", cors(), async (req, res) => {
   try {
@@ -38,17 +46,17 @@ app.get("/api/join", cors(), async (req, res) => {
 });
 
 //getting infromation specific to id
-app.get("/api/blog/:blogId", cors(), async (req, res) => {
-  try {
-    //req.param what you're getting from your url
-    const tradesId = req.params.tradesId;
-    const getId = await db.query(`SELECT * FROM trades WHERE id=${tradesId}`);
-    console.log("tradesId", tradesId.rows);
-    res.send(getId.rows);
-  } catch (e) {
-    return res.send(400).json({ e });
-  }
-});
+// app.get("/api/blog/:blogId", cors(), async (req, res) => {
+//   try {
+//     //req.param what you're getting from your url
+//     const tradesId = req.params.tradesId;
+//     const getId = await db.query(`SELECT * FROM trades WHERE id=${tradesId}`);
+//     console.log("tradesId", tradesId.rows);
+//     res.send(getId.rows);
+//   } catch (e) {
+//     return res.send(400).json({ e });
+//   }
+// });
 
 app.get('/api/quote', (req,res) => {
   const url=`https://motivational-quote-api.herokuapp.com/quotes/random`;
@@ -76,14 +84,14 @@ app.post("/api/blog", cors(), async (req, res) => {
 });
 
 app.post("/api/favorite/:id", cors(), async (req, res) => {
-  const blogId = req.params.id;
+  const tradeId = req.params.id;
   const newFavorite = {
     // userId: req.body.users_id,
     userId: 1,
   };
   const existing = await db.query(
-    "SELECT id FROM favorite_blogs WHERE blog_id = $1 and users_id = $2",
-    [blogId, newFavorite.userId]
+    "SELECT id FROM users_trades WHERE users_id = $1 and trade_id = $2",
+    [tradeId, newFavorite.userId]
   );
   console.log(existing.rows);
   console.log([newFavorite.userId, newFavorite.blog]);
@@ -95,13 +103,13 @@ app.post("/api/favorite/:id", cors(), async (req, res) => {
   // res.json(result.rows[0]);
   if (existing.rows.length >= 1) {
     const nonExisting = await db.query(
-      "DELETE FROM favorite_blogs WHERE id = $1",
+      "DELETE FROM users_trades WHERE id = $1",
       [existing.rows[0].id]
     );
   } else {
     const result = await db.query(
-      "INSERT INTO favorite_blogs(users_id, blog_id) VALUES($1, $2) RETURNING *",
-      [newFavorite.userId, blogId]
+      "INSERT INTO users_trades(users_id, trade_id) VALUES($1, $2) RETURNING *",
+      [newFavorite.userId, tradeId]
     );
     console.log(result.rows[0]);
    
@@ -109,11 +117,11 @@ app.post("/api/favorite/:id", cors(), async (req, res) => {
   res.json({key:'success'});
 });
 
-app.delete("/api/blog/:id", async (req, res) => {
-  const blogId = req.params.id; //It has to match
-  console.log(blogId);
+app.delete("/api/trades/:id", async (req, res) => {
+  const tradeId = req.params.id; //It has to match
+  console.log(tradeId);
   try {
-    await db.query("DELETE FROM blog WHERE id=$1", [blogId]);
+    await db.query("DELETE FROM trades WHERE id=$1", [tradeId]);
     res.send({ status: "success" });
   } catch (e) {
     console.log(e);
@@ -121,34 +129,61 @@ app.delete("/api/blog/:id", async (req, res) => {
   }
 });
 
-app.put("/api/blog/:blogId", cors(), async (req, res) => {
-  const blogId = req.params.blogId;
-  const updatedBlog = {
-    id: req.body.id,
-    title: req.body.title,
-    blurb: req.body.blurb,
-    content: req.body.content,
-    img: req.body.img,
-  };
-  const query =
-    "UPDATE blog SET  title=$1, blurb=$2, content=$3, img=$4 WHERE id=$5 RETURNING *";
-  const values = [
-    updatedBlog.title,
-    updatedBlog.blurb,
-    updatedBlog.content,
-    updatedBlog.img,
-    blogId,
-  ];
-  try {
-    const updated = await db.query(query, values);
-    console.log("updated", updated);
-    res.send(updated);
-  } catch (e) {
-    console.log("error", e);
-    return res.status(400).json({ e });
+// app.put("/api/blog/:blogId", cors(), async (req, res) => {
+//   const blogId = req.params.blogId;
+//   const updatedBlog = {
+//     id: req.body.id,
+//     title: req.body.title,
+//     blurb: req.body.blurb,
+//     content: req.body.content,
+//     img: req.body.img,
+//   };
+//   const query =
+//     "UPDATE blog SET  title=$1, blurb=$2, content=$3, img=$4 WHERE id=$5 RETURNING *";
+//   const values = [
+//     updatedBlog.title,
+//     updatedBlog.blurb,
+//     updatedBlog.content,
+//     updatedBlog.img,
+//     blogId,
+//   ];
+//   try {
+//     const updated = await db.query(query, values);
+//     console.log("updated", updated);
+//     res.send(updated);
+//   } catch (e) {
+//     console.log("error", e);
+//     return res.status(400).json({ e });
+//   }
+// });
+// // console.log that your server is up and running
+
+app.post('/api/me', cors(), async (req, res) => {
+  const newUser = {
+    lastname: req.body.family_name,
+    firstname: req.body.given_name,
+    email: req.body.email,
+    sub: req.body.sub
+
   }
+  //console.log(newUser);
+
+  const queryEmail = 'SELECT * FROM users WHERE email=$1 LIMIT 1';
+  const valuesEmail = [newUser.email]
+  const resultsEmail = await db.query(queryEmail, valuesEmail);
+  if(resultsEmail.rows[0]){
+    console.log(`Thank you ${resultsEmail.rows[0].firstname} for coming back`)
+  } else{
+  const query = 'INSERT INTO users(lastname, firstname, email, sub) VALUES($1, $2, $3, $4) RETURNING *'
+  const values = [newUser.lastname, newUser.firstname, newUser.email, newUser.sub]
+  const result = await db.query(query, values);
+  console.log(result.rows[0]);
+
+  }
+
 });
-// console.log that your server is up and running
-app.listen(PORT, () => {
+
+
+ app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
-});
+ });
