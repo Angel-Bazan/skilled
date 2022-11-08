@@ -18,15 +18,6 @@ const Favorite = (props) => {
         loadTrade();
     }, []);
 
-    // const deleteTrade = async (deleteId) => {
-    //     await fetch(`${API_URL}/api/trade/${deleteId}`, {
-    //       method: "DELETE",
-    //     }).then((response) => {
-    //         if(response.ok) {
-    //             loadTrade();
-    //         }
-    //     })
-    //   };
 
     return (
         <div className="trades">
