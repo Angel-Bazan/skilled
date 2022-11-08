@@ -18,15 +18,15 @@ const Favorite = (props) => {
         loadTrade();
     }, []);
 
-    const deleteTrade = async (deleteId) => {
-        await fetch(`${API_URL}/api/trade/${deleteId}`, {
-          method: "DELETE",
-        }).then((response) => {
-            if(response.ok) {
-                loadTrade();
-            }
-        })
-      };
+    // const deleteTrade = async (deleteId) => {
+    //     await fetch(`${API_URL}/api/trade/${deleteId}`, {
+    //       method: "DELETE",
+    //     }).then((response) => {
+    //         if(response.ok) {
+    //             loadTrade();
+    //         }
+    //     })
+    //   };
 
     return (
         <div className="trades">
@@ -57,15 +57,7 @@ const Favorite = (props) => {
                   <strong>Colleges:</strong>
                   
                   <br />
-                  <button className="btn btn-danger">
-                    <span
-                      className="material-symbols-outlined"
-                      onClick={() => deleteTrade(trades.id)}
-                    >
-                      Delete
-                    </span>
-                  </button>
-                  <br />
+                 
                   <br />
                 </div>
               </div>
