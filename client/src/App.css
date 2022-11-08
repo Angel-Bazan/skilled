@@ -138,6 +138,9 @@ h2{
 .logout{
   margin-right: 34px;
 }
+.username{
+  display: inline-block;
+}
 
 fieldset {
   font-size: 1.5rem;
