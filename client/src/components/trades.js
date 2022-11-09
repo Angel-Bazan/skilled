@@ -4,11 +4,12 @@ import { API_URL } from "../constants";
 
 const Trades = () => {
   const [trades, SetTrades] = useState([]);
-  const [name, setName] = useState("");
-  const [link, setLink] = useState("");
-  const [content, setContent] = useState("");
-  const [img, setImg] = useState("");
-  const [id, setId] = useState(-1); //by default you are not editing anything so id -1;
+  const [favorites, SetFavorites] = useState([]);
+  // const [name, setName] = useState("");
+  // const [link, setLink] = useState("");
+  // const [content, setContent] = useState("");
+  // const [img, setImg] = useState("");
+  // const [id, setId] = useState(-1); //by default you are not editing anything so id -1;
 
   const addTrade = (newTrade) => {
     SetTrades((trades) => [...trades, newTrade]);
@@ -46,6 +47,11 @@ const Trades = () => {
     const trade = await response.json();
     SetTrades(trade);
   };
+  const getFavorite = async (postId) => {
+    const response = await fetch(`${API_URL}/api/favorite/${postId}`);
+    const favorite = await response.json();
+    SetFavorites(favorite)
+  }
 
   useEffect(() => {
     getTrade();
