@@ -35,11 +35,12 @@ app.get("/api/user", cors(), async (req, res) => {
 });
 
 app.get("/api/favorite/:id", cors(), async (req, res) => {
-    const userID = req.query.users_id;
-    const tradeID = req.params.id;
+    // const userID = req.query.users_id;
+    // const tradeID = req.params.id;
+    const userID = 1;
     try {
-      const { rows: users_trades } = await db.query('SELECT trade_id and users_id FROM users_trades WHERE id = $2', [userID, tradeID]);
-      res.send(users_trades);
+      const { rows: trade_id } = await db.query('SELECT trade_id FROM users_trades WHERE users_id = $1', [userID]);
+      res.send(trade_id);
     } catch (e) {
       return res.status(400).json({ e });
     }

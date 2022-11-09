@@ -21,9 +21,11 @@ const LogoutButton = () => {
 
   return (
     <div className="logout">
-      <div className="logout">
-        Hello {activeUser && activeUser.given_name}
+      
+      <div className="name">
+        <h5>Hello {activeUser && activeUser.given_name}</h5>
       </div>
+      <div classname="logoutB">
       <button
         className="btn btn-danger btn-block"
         onClick={() =>
@@ -34,6 +36,7 @@ const LogoutButton = () => {
       >
         Log Out
       </button>
+      </div>
     </div>
   );
 };
