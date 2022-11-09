@@ -4,11 +4,12 @@ import { API_URL } from "../constants";
 
 const Trades = () => {
   const [trades, SetTrades] = useState([]);
-  const [name, setName] = useState("");
-  const [link, setLink] = useState("");
-  const [content, setContent] = useState("");
-  const [img, setImg] = useState("");
-  const [id, setId] = useState(-1); //by default you are not editing anything so id -1;
+  const [favorites, SetFavorites] = useState([])
+  // const [name, setName] = useState("");
+  // const [link, setLink] = useState("");
+  // const [content, setContent] = useState("");
+  // const [img, setImg] = useState("");
+  // const [id, setId] = useState(-1); //by default you are not editing anything so id -1;
 
   const addTrade = (newTrade) => {
     SetTrades((trades) => [...trades, newTrade]);
@@ -30,22 +31,17 @@ const Trades = () => {
     console.log(postId);
   };
 
-  // const editTrade = async () => {
-  //   await fetch(`${API_URL}/api/blog/${id}`, {
-  //     method: "PUT",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify({ title, blurb, content, img }),
-  //   });
-
-  //   await getBlog();
-  //   setId(-1); //that is the function you call when you click the edit button and are done editing
-  // };
-
   const getTrade = async () => {
     const response = await fetch(`${API_URL}/api/trade`);
     const trade = await response.json();
     SetTrades(trade);
   };
+
+  const getFavorite = async (postId) => {
+    const response = await fetch(`${API_URL}/api/favorite/${postId}`);
+    const favorite = await response.json();
+    SetFavorites(favorite)
+  }
 
   useEffect(() => {
     getTrade();
