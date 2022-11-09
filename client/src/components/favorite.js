@@ -5,28 +5,39 @@ import { API_URL } from "../constants";
 const Favorite = (props) => {
     const [trade, setTrade] = useState([]);
 
-    const loadTrade = () => {
-        fetch("/api/favorite/:id")
-            .then((response) => response.json())
-            .then(trade => {
-                setTrade(trade);
-                console.log("Trades list for the user", trade)
-            })
-    }
+    // const loadTrade = (newTrade) => {
+    //     fetch("/api/favorite/:id")
+    //         .then((response) => response.json())
+    //         .then(trade => {
+    //             setTrade(trade);
+    //             console.log("Trades list for the user", trade)
+    //         })
+    // }
 
-    useEffect(() => {
-        loadTrade();
-    }, []);
+    // useEffect(() => {
+    //     loadTrade();
+    // }, []);
 
+    // const loadTrade = (newTrade) => {
+    //     return fetch(`${API_URL}/api/favorite/:id`, {
+    //       method: "POST",
+    //       headers: { "Content-Type": "application/json" },
+    //       body: JSON.stringify(newBlog),
+    //     })
+    //       .then((response) => {
+    //         return response.json();
+    //       })
+    //       .then((data) => {
+    //         console.log("From the post ", data);
+    //         props.addTrade(data);
+    //       });
+    //};
 
     return (
         <div className="trades">
             <div>
                 <h2>Favorite Trades List</h2>
 
-            </div>
-            <div>
-                <h3>{props.firstname}</h3>
             </div>
 
             <ul>

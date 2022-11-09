@@ -34,29 +34,17 @@ app.get("/api/user", cors(), async (req, res) => {
   }
 });
 
-app.get("/api/join", cors(), async (req, res) => {
-  try {
-    const { rows: trades } = await db.query(
-      "SELECT trades.name, trades.content, trades.link, users.username, users.id AS users_id FROM trades LEFT JOIN users ON trades.users_id = users.id"
-    );
-    res.send(trades);
-  } catch (e) {
-    return res.status(400).json({ e });
-  }
+app.get("/api/favorite/:id", cors(), async (req, res) => {
+    const userID = req.query.users_id;
+    const tradeID = req.params.id;
+    try {
+      const { rows: users_trades } = await db.query('SELECT trade_id and users_id FROM users_trades WHERE id = $2', [userID, tradeID]);
+      res.send(users_trades);
+    } catch (e) {
+      return res.status(400).json({ e });
+    }
+    
 });
-
-//getting infromation specific to id
-// app.get("/api/blog/:blogId", cors(), async (req, res) => {
-//   try {
-//     //req.param what you're getting from your url
-//     const tradesId = req.params.tradesId;
-//     const getId = await db.query(`SELECT * FROM trades WHERE id=${tradesId}`);
-//     console.log("tradesId", tradesId.rows);
-//     res.send(getId.rows);
-//   } catch (e) {
-//     return res.send(400).json({ e });
-//   }
-// });
 
 app.get('/api/quote', (req,res) => {
   const url=`https://motivational-quote-api.herokuapp.com/quotes/random`;
@@ -129,34 +117,6 @@ app.delete("/api/trades/:id", async (req, res) => {
   }
 });
 
-// app.put("/api/blog/:blogId", cors(), async (req, res) => {
-//   const blogId = req.params.blogId;
-//   const updatedBlog = {
-//     id: req.body.id,
-//     title: req.body.title,
-//     blurb: req.body.blurb,
-//     content: req.body.content,
-//     img: req.body.img,
-//   };
-//   const query =
-//     "UPDATE blog SET  title=$1, blurb=$2, content=$3, img=$4 WHERE id=$5 RETURNING *";
-//   const values = [
-//     updatedBlog.title,
-//     updatedBlog.blurb,
-//     updatedBlog.content,
-//     updatedBlog.img,
-//     blogId,
-//   ];
-//   try {
-//     const updated = await db.query(query, values);
-//     console.log("updated", updated);
-//     res.send(updated);
-//   } catch (e) {
-//     console.log("error", e);
-//     return res.status(400).json({ e });
-//   }
-// });
-// // console.log that your server is up and running
 
 app.post('/api/me', cors(), async (req, res) => {
   const newUser = {

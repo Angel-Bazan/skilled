@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-// import Form from "./form";
+import Favorite from "./favorite";
 import { API_URL } from "../constants";
 
 const Trades = () => {
@@ -157,7 +157,7 @@ const Trades = () => {
           Update User
         </button>
       </div> */}
-      {/* <Form addTrade={addTrade} /> */}
+      <Favorite addTrade={addTrade} />
     </section>
   );
 };
