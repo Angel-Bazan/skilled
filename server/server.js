@@ -34,10 +34,12 @@ app.get("/api/user", cors(), async (req, res) => {
   }
 });
 
-app.get("/api/join", cors(), async (req, res) => {
+app.get("/api/favorite/:id", cors(), async (req, res) => {
+  const userID = req.query.users_id;
+  const tradeID = req.params.id;
   try {
     const { rows: trades } = await db.query(
-      "SELECT trades.name, trades.content, trades.link, users.username, users.id AS users_id FROM trades LEFT JOIN users ON trades.users_id = users.id"
+      "SELECT users_id, trade_id FROM users_trades LEFT JOIN trades ON users_trades.trade_id = trades.id", [userID, tradeID]
     );
     res.send(trades);
   } catch (e) {
@@ -128,35 +130,6 @@ app.delete("/api/trades/:id", async (req, res) => {
     return res.status(400).json({ e });
   }
 });
-
-// app.put("/api/blog/:blogId", cors(), async (req, res) => {
-//   const blogId = req.params.blogId;
-//   const updatedBlog = {
-//     id: req.body.id,
-//     title: req.body.title,
-//     blurb: req.body.blurb,
-//     content: req.body.content,
-//     img: req.body.img,
-//   };
-//   const query =
-//     "UPDATE blog SET  title=$1, blurb=$2, content=$3, img=$4 WHERE id=$5 RETURNING *";
-//   const values = [
-//     updatedBlog.title,
-//     updatedBlog.blurb,
-//     updatedBlog.content,
-//     updatedBlog.img,
-//     blogId,
-//   ];
-//   try {
-//     const updated = await db.query(query, values);
-//     console.log("updated", updated);
-//     res.send(updated);
-//   } catch (e) {
-//     console.log("error", e);
-//     return res.status(400).json({ e });
-//   }
-// });
-// // console.log that your server is up and running
 
 app.post('/api/me', cors(), async (req, res) => {
   const newUser = {
