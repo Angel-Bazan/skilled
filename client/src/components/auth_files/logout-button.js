@@ -25,7 +25,7 @@ const LogoutButton = () => {
       <div className="name">
         <h5>Hello {activeUser && activeUser.given_name}</h5>
       </div>
-      <div classname="logoutB">
+      <div className="logoutB">
       <button
         className="btn btn-danger btn-block"
         onClick={() =>

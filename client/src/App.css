@@ -137,11 +137,11 @@ h2{
 }
 .logout{
   margin-right: 34px;
-  display:inline-block;
+  display:flex;
 
 }
 .name{
-  display: flex;
+  padding-top: 5px;
 }
 .logoutB{
   display: inline-block;
