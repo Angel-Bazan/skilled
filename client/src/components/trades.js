@@ -104,56 +104,8 @@ const Trades = () => {
           );
         })}
       </ul>
-      {/* <div className={id === -1 ? "d-none" : "d-block"}>
-        <label htmlFor="edit-blog-name">Name</label>
-        <input
-          id="edit-blog-title"
-          type="text"
-          value={title}
-          onChange={(e) => {
-            setTitle(e.target.value);
-          }}
-        />{" "}
-        <br />
-        <br />
-        <label htmlFor="edit-blog-blurb">Blurb</label>
-        <input
-          id="edit-blog-blurb"
-          type="text"
-          value={blurb}
-          onChange={(e) => {
-            setBlurb(e.target.value);
-          }}
-        />{" "}
-        <br />
-        <br />
-        <label htmlFor="edit-blog-content">Content</label>
-        <input
-          id="edit-blog-content"
-          type="text"
-          value={content}
-          onChange={(e) => {
-            setContent(e.target.value);
-          }}
-        />{" "}
-        <br />
-        <br />
-        <label htmlFor="edit-blog-image">Image</label>
-        <input
-          id="edit-blog-image"
-          type="text"
-          value={img}
-          onChange={(e) => {
-            setImg(e.target.value);
-          }}
-        />{" "}
-        <br />
-        <br />
-        <button className="btn btn-primary" onClick={editBlog}>
-          Update User
-        </button>
-      </div> */}
-      <Favorite addTrade={addTrade} />
+  
+      <Favorite getFavorite={getFavorite} />
     </section>
   );
 };
