@@ -35,15 +35,14 @@ app.get("/api/user", cors(), async (req, res) => {
   }
 });
 
-app.get("/api/favorite/:id", cors(), async (req, res) => {
+app.get("/api/favorite", cors(), async (req, res) => {
   const userID = req.query.users_id;
-  const tradeID = req.params.id;
   try {
-    const { rows: trade_id } = await db.query(
+    const { rows: trade_ids } = await db.query(
       "SELECT trade_id FROM users_trades WHERE users_id = $1",
-      [userID,tradeID]
+      [userID]
     );
-    res.send(trade_id);
+    res.send(trade_ids);
   } catch (e) {
     return res.status(400).json({ e });
   }
@@ -78,14 +77,14 @@ app.post("/api/favorite/:id", cors(), async (req, res) => {
   const tradeId = req.params.id;
   const newFavorite = {
    
-    userId: 1,
+    userId: 3,
   };
   const existing = await db.query(
     "SELECT id FROM users_trades WHERE users_id = $1 and trade_id = $2",
-    [tradeId, newFavorite.userId]
+    [newFavorite.userId, tradeId]
   );
   console.log(existing.rows);
-  console.log([newFavorite.userId, newFavorite.blog]);
+  console.log([newFavorite.userId, newFavorite.tradeId]);
  
   if (existing.rows.length >= 1) {
     const nonExisting = await db.query(

@@ -3,7 +3,14 @@ import { API_URL } from "../constants";
 
 
 const Favorite = (props) => {
-    const [trade, setTrade] = useState([]);
+    const [trades, SetTrades] = useState([]);
+    const [favorites, SetFavorites] = useState([]);
+
+    const getFavorites = async () => {
+        const response = await fetch(`${API_URL}/api/favorite?users_id=3`);
+        const favorite = await response.json();
+        SetFavorites(favorite)
+      }
 
     // const loadTrade = (newTrade) => {
     //     fetch("/api/favorite/:id")
@@ -14,24 +21,24 @@ const Favorite = (props) => {
     //         })
     // }
 
-    // useEffect(() => {
-    //     loadTrade();
-    // }, []);
+    useEffect(() => {
+        getFavorites();
+    }, []);
 
-    const loadTrade = (newTrade) => {
-        return fetch(`${API_URL}/api/favorite/:id`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(newTrade),
-        })
-          .then((response) => {
-            return response.json();
-          })
-          .then((data) => {
-            console.log("From the post ", data);
-            props.addTrade(data);
-          });
-    };
+    // const loadTrade = (newTrade) => {
+    //     return fetch(`${API_URL}/api/favorite/:id`, {
+    //       method: "POST",
+    //       headers: { "Content-Type": "application/json" },
+    //       body: JSON.stringify(newTrade),
+    //     })
+    //       .then((response) => {
+    //         return response.json();
+    //       })
+    //       .then((data) => {
+    //         console.log("From the post ", data);
+    //         props.addTrade(data);
+    //       });
+    // };
 
     // const handleSubmit = (e) => {
     //     e.preventDefault();
@@ -44,22 +51,22 @@ const Favorite = (props) => {
                 <h2>Favorite Trades List</h2>
 
             </div>
-
+            {favorites.join(":")}
             <ul>
-                {trade.map(trades =>
+                {trades.map(trade =>
 
-                <li key={trades.id}>
+                <li key={trade.id}>
                        <div className="card" style={{ width: "18rem" }}>
-                <img src={trades.img} className="card-img-top" alt="..."></img>
+                <img src={trade.img} className="card-img-top" alt="..."></img>
                 <div className="card-body">
                   <br />
                   <strong>Name:</strong>
-                  {trades.name}
+                  {trade.name}
                   <br />
                   <strong>Link:</strong>
-                  {trades.link} <br />
+                  {trade.link} <br />
                   <strong>Content:</strong>
-                  {trades.content}
+                  {trade.content}
                   <br />
                   <strong>Colleges:</strong>
                   
@@ -73,6 +80,7 @@ const Favorite = (props) => {
                 </li>
                   )}   
             </ul>
+
             
         </div>
     )
