@@ -1,25 +1,17 @@
 import { useState, useEffect} from "react";
+import Trades from "./trades";
 import { API_URL } from "../constants";
 
 
-const Favorite = (props) => {
+const Favorite = () => {
     const [trades, SetTrades] = useState([]);
-    const [favorites, SetFavorites] = useState([]);
+  
 
     const getFavorites = async () => {
-        const response = await fetch(`${API_URL}/api/favorite?users_id=3`);
-        const favorite = await response.json();
-        SetFavorites(favorite)
+        const response = await fetch(`${API_URL}/api/favorite`);
+        const trades = await response.json();
+        SetTrades(trades)
       }
-
-    // const loadTrade = (newTrade) => {
-    //     fetch("/api/favorite/:id")
-    //         .then((response) => response.json())
-    //         .then(trade => {
-    //             setTrade(trade);
-    //             console.log("Trades list for the user", trade)
-    //         })
-    // }
 
     useEffect(() => {
         getFavorites();
@@ -51,7 +43,7 @@ const Favorite = (props) => {
                 <h2>Favorite Trades List</h2>
 
             </div>
-            {favorites.join(":")}
+            {/* {favorites.join(":")} */}
             <ul>
                 {trades.map(trade =>
 
@@ -80,8 +72,7 @@ const Favorite = (props) => {
                 </li>
                   )}   
             </ul>
-
-            
+            <Trades getFavorites={getFavorites} />
         </div>
     )
 }
