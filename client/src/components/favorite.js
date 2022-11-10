@@ -18,20 +18,25 @@ const Favorite = (props) => {
     //     loadTrade();
     // }, []);
 
-    // const loadTrade = (newTrade) => {
-    //     return fetch(`${API_URL}/api/favorite/:id`, {
-    //       method: "POST",
-    //       headers: { "Content-Type": "application/json" },
-    //       body: JSON.stringify(newBlog),
-    //     })
-    //       .then((response) => {
-    //         return response.json();
-    //       })
-    //       .then((data) => {
-    //         console.log("From the post ", data);
-    //         props.addTrade(data);
-    //       });
-    //};
+    const loadTrade = (newTrade) => {
+        return fetch(`${API_URL}/api/favorite/:id`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(newTrade),
+        })
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            console.log("From the post ", data);
+            props.addTrade(data);
+          });
+    };
+
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     postTade(trade);
+    //   };
 
     return (
         <div className="trades">
