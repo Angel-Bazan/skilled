@@ -9,7 +9,7 @@ const LogoutButton = () => {
   const [activeUser, setActiveUser] = useState([]);
 
   const getUser = async () => {
-    // const response = await fetch(`http://localhost:5000/api/user`);
+    // const response = await fetch(`/api/user`);
     // const user = await response.json();
     setActiveUser(user);
   };

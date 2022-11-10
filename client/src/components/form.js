@@ -31,7 +31,7 @@ const Form = (props) => {
 
   //A function to handle the post request
   const postBlog = (newBlog) => {
-    return fetch(`${API_URL}/api/blog`, {
+    return fetch(`/api/blog`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newBlog),
