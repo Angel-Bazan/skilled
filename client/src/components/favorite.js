@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import Trades from "./trades";
-import { API_URL } from "../constants";
+// import Trade from "./trades";
+
 
 const Favorite = () => {
   const [trades, SetTrades] = useState([]);
 
   const getFavorites = async () => {
-    const response = await fetch(`/api/favorite`);
+    const response = await fetch(`/api/favorite?users_id=3`);
     const trades = await response.json();
     SetTrades(trades);
   };
@@ -15,25 +15,6 @@ const Favorite = () => {
     getFavorites();
   }, []);
 
-  // const loadTrade = (newTrade) => {
-  //     return fetch(`/api/favorite/:id`, {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify(newTrade),
-  //     })
-  //       .then((response) => {
-  //         return response.json();
-  //       })
-  //       .then((data) => {
-  //         console.log("From the post ", data);
-  //         props.addTrade(data);
-  //       });
-  // };
-
-  // const handleSubmit = (e) => {
-  //     e.preventDefault();
-  //     postTade(trade);
-  //   };
 
   return (
     <div className="trades">
@@ -64,7 +45,7 @@ const Favorite = () => {
           </li>
         ))}
       </ul>
-      <Trades getFavorites={getFavorites} />
+    
     </div>
   );
 };
