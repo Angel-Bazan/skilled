@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Favorite from "./favorite";
+
 import { API_URL } from "../constants";
 
 const Trades = () => {
@@ -99,7 +99,7 @@ const Trades = () => {
           );
         })}
       </ul>
-  
+ 
      
     </section>
   );

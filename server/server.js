@@ -4,7 +4,7 @@ require("dotenv").config();
 const db = require("./db/db-connection.js");
 const bodyParser = require("body-parser");
 const fetch = (...args) =>
-  import("node-fetch").then(({ default: fetch }) => fetch(...args));
+import("node-fetch").then(({ default: fetch }) => fetch(...args));
 
 const app = express();
 
@@ -39,7 +39,7 @@ app.get("/api/favorite", cors(), async (req, res) => {
   const userID = req.query.users_id;
   try {
     const { rows: trade_ids } = await db.query(
-      "SELECT trade_id FROM users_trades WHERE users_id = $1",
+      "SELECT trades.id, trades.img, trades.link FROM trades INNER JOIN users_trades ON trades.id=users_trades.id",
       [userID]
     );
     res.send(trade_ids);
