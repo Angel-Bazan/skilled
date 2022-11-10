@@ -36,13 +36,12 @@ app.get("/api/user", cors(), async (req, res) => {
 });
 
 app.get("/api/favorite/:id", cors(), async (req, res) => {
-  // const userID = req.query.users_id;
-  // const tradeID = req.params.id;
-  const userID = 1;
+  const userID = req.query.users_id;
+  const tradeID = req.params.id;
   try {
     const { rows: trade_id } = await db.query(
       "SELECT trade_id FROM users_trades WHERE users_id = $1",
-      [userID]
+      [userID,tradeID]
     );
     res.send(trade_id);
   } catch (e) {
