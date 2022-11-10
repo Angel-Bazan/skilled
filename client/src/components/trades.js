@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import { API_URL } from "../constants";
+// import { API_URL } from "../constants";
 
 const Trades = () => {
   const [trades, SetTrades] = useState([]);
@@ -14,7 +14,7 @@ const Trades = () => {
     SetTrades((trades) => [...trades, newTrade]);
   };
   const deleteTrade = async (deleteId) => {
-    await fetch(`${API_URL}/api/trade/${deleteId}`, {
+    await fetch(`/api/trade/${deleteId}`, {
       method: "DELETE",
     });
 
@@ -22,7 +22,7 @@ const Trades = () => {
     console.log(deleteId);
   };
   const favoriteTrade = async (postId) => {
-    await fetch(`${API_URL}/api/favorite/${postId}`, {
+    await fetch(`/api/favorite/${postId}`, {
       method: "POST",
     });
 
@@ -31,7 +31,7 @@ const Trades = () => {
   };
 
   const getTrade = async () => {
-    const response = await fetch(`${API_URL}/api/trade`);
+    const response = await fetch(`/api/trade`);
     const trade = await response.json();
     SetTrades(trade);
   };

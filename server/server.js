@@ -5,10 +5,18 @@ const db = require("./db/db-connection.js");
 const bodyParser = require("body-parser");
 const fetch = (...args) =>
 import("node-fetch").then(({ default: fetch }) => fetch(...args));
+const path = require("path");
+const { fileURLToPath } = require('url');
 
 const app = express();
 
-const PORT = 5000;
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
+const REACT_BUILD_DIR = path.join(__dirname, '..', 'client', 'build');
+app.use(express.static(REACT_BUILD_DIR))
+const PORT = process.env.PORT || 5000;
+
+
 app.use(cors());
 app.use(express.json());
 
