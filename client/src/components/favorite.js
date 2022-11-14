@@ -1,82 +1,58 @@
-import { useState, useEffect} from "react";
-import { API_URL } from "../constants";
+import { useState, useEffect } from "react";
+// import Trade from "./trades";
 
+const Favorite = () => {
+  const [trades, SetTrades] = useState([]);
 
-const Favorite = (props) => {
-    const [trade, setTrade] = useState([]);
+  const getFavorites = async () => {
+    const response = await fetch(`/api/favorite?users_id=3`);
+    const trades = await response.json();
+    SetTrades(trades);
+  };
 
-    const loadTrade = () => {
-        fetch("/api/favorite/:id")
-            .then((response) => response.json())
-            .then(trade => {
-                setTrade(trade);
-                console.log("Trades list for the user", trade)
-            })
-    }
+  useEffect(() => {
+    getFavorites();
+  }, []);
 
-    useEffect(() => {
-        loadTrade();
-    }, []);
-
-    const deleteTrade = async (deleteId) => {
-        await fetch(`${API_URL}/api/trade/${deleteId}`, {
-          method: "DELETE",
-        }).then((response) => {
-            if(response.ok) {
-                loadTrade();
-            }
-        })
-      };
-
-    return (
-        <div className="trades">
-            <div>
-                <h2>Favorite Trades List</h2>
-
-            </div>
-            <div>
-                <h3>{props.firstname}</h3>
-            </div>
-
-            <ul>
-                {trade.map(trades =>
-
-                <li key={trades.id}>
-                       <div className="card" style={{ width: "18rem" }}>
-                <img src={trades.img} className="card-img-top" alt="..."></img>
-                <div className="card-body">
-                  <br />
-                  <strong>Name:</strong>
-                  {trades.name}
-                  <br />
-                  <strong>Link:</strong>
-                  {trades.link} <br />
-                  <strong>Content:</strong>
-                  {trades.content}
-                  <br />
-                  <strong>Colleges:</strong>
-                  
-                  <br />
-                  <button className="btn btn-danger">
-                    <span
-                      className="material-symbols-outlined"
-                      onClick={() => deleteTrade(trades.id)}
-                    >
-                      Delete
-                    </span>
-                  </button>
-                  <br />
-                  <br />
-                </div>
+  return (
+    <div className="trades">
+      <div>
+        <h2>Favorite Trades List</h2>
+      </div>
+      {/* {favorites.join(":")} */}
+      <ul id="favorite" className="row justify-content-md-center list-unstyled">
+        {trades.map((trade) => (
+          <li key={trade.id} className="col col-sm-4 mb-3">
+            <div className="card" style={{ width: "18rem" }}>
+              <img src={trade.img} className="card-img-top" alt="..."></img>
+              <div className="card-body">
+                <br />
+                <strong>Name:</strong>
+                {trade.name}
+                <br />
+                <strong>Link:</strong>
+                {trade.link} <br />
+                <strong>Content:</strong>
+                {trade.content}
+                <br />
+                <strong>Colleges:</strong>
+                <br />
+                <button>
+                  <span
+                    className="material-symbols-outlined"
+                    // onClick={() => }
+                  >
+                    unfavorite
+                  </span>
+                </button>
+                <br />
               </div>
-                    
-                   
-                </li>
-                  )}   
-            </ul>
-            
-        </div>
-    )
-}
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
 
-export default Favorite
+export default Favorite;

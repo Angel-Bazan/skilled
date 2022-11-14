@@ -143,7 +143,12 @@ h2{
   display: inline-block;
   padding-top: 5px;
 }
-
+.name{
+  padding-top: 5px;
+}
+.logoutB{
+  display: inline-block;
+}
 fieldset {
   font-size: 1.5rem;
   font-weight: bolder;

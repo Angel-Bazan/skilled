@@ -3,11 +3,20 @@ const cors = require("cors");
 require("dotenv").config();
 const db = require("./db/db-connection.js");
 const bodyParser = require("body-parser");
-const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+const fetch = (...args) =>
+import("node-fetch").then(({ default: fetch }) => fetch(...args));
+const path = require("path");
+const { fileURLToPath } = require('url');
 
 const app = express();
 
-const PORT = 5000;
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
+const REACT_BUILD_DIR = path.join(__dirname, '..', 'client', 'build');
+app.use(express.static(REACT_BUILD_DIR))
+const PORT = process.env.PORT || 5000;
+
+
 app.use(cors());
 app.use(express.json());
 
@@ -34,39 +43,36 @@ app.get("/api/user", cors(), async (req, res) => {
   }
 });
 
+<<<<<<< HEAD
 app.get("/api/favorite/:id", cors(), async (req, res) => {
   const userID = req.query.users_id;
   const tradeID = req.params.id;
   try {
     const { rows: trades } = await db.query(
       "SELECT users_id, trade_id FROM users_trades LEFT JOIN trades ON users_trades.trade_id = trades.id", [userID, tradeID]
+=======
+app.get("/api/favorite", cors(), async (req, res) => {
+  const userID = req.query.users_id;
+  console.log(userID)
+  try {
+    const { rows: trade_ids } = await db.query(
+      "SELECT trades.id, trades.img, trades.name, trades.link FROM trades INNER JOIN users_trades ON trades.id=users_trades.trade_id WHERE users_trades.users_id = $1",
+      [userID]
+>>>>>>> skilled
     );
-    res.send(trades);
+    res.send(trade_ids);
   } catch (e) {
     return res.status(400).json({ e });
   }
 });
 
-//getting infromation specific to id
-// app.get("/api/blog/:blogId", cors(), async (req, res) => {
-//   try {
-//     //req.param what you're getting from your url
-//     const tradesId = req.params.tradesId;
-//     const getId = await db.query(`SELECT * FROM trades WHERE id=${tradesId}`);
-//     console.log("tradesId", tradesId.rows);
-//     res.send(getId.rows);
-//   } catch (e) {
-//     return res.send(400).json({ e });
-//   }
-// });
-
-app.get('/api/quote', (req,res) => {
-  const url=`https://motivational-quote-api.herokuapp.com/quotes/random`;
+app.get("/api/quote", (req, res) => {
+  const url = `https://motivational-quote-api.herokuapp.com/quotes/random`;
   fetch(url)
-  .then((response) => response.json())
-  .then((data) => {
-    res.send(data)
-  });
+    .then((response) => response.json())
+    .then((data) => {
+      res.send(data);
+    });
 });
 // create the POST request
 app.post("/api/blog", cors(), async (req, res) => {
@@ -88,21 +94,16 @@ app.post("/api/blog", cors(), async (req, res) => {
 app.post("/api/favorite/:id", cors(), async (req, res) => {
   const tradeId = req.params.id;
   const newFavorite = {
-    // userId: req.body.users_id,
-    userId: 1,
+   
+    userId: 3,
   };
   const existing = await db.query(
     "SELECT id FROM users_trades WHERE users_id = $1 and trade_id = $2",
-    [tradeId, newFavorite.userId]
+    [newFavorite.userId, tradeId]
   );
   console.log(existing.rows);
-  console.log([newFavorite.userId, newFavorite.blog]);
-  // const result = await db.query(
-  //   'INSERT INTO favorite_blogs(users_id, blog_id) VALUES($1, $2) RETURNING *',
-  //   [newFavorite.userId, newFavorite.blog],
-  // );
-  // console.log(result.rows[0]);
-  // res.json(result.rows[0]);
+  console.log([newFavorite.userId, newFavorite.tradeId]);
+ 
   if (existing.rows.length >= 1) {
     const nonExisting = await db.query(
       "DELETE FROM users_trades WHERE id = $1",
@@ -114,9 +115,8 @@ app.post("/api/favorite/:id", cors(), async (req, res) => {
       [newFavorite.userId, tradeId]
     );
     console.log(result.rows[0]);
-   
   }
-  res.json({key:'success'});
+  res.json({ key: "success" });
 });
 
 app.delete("/api/trades/:id", async (req, res) => {
@@ -131,32 +131,38 @@ app.delete("/api/trades/:id", async (req, res) => {
   }
 });
 
+<<<<<<< HEAD
 app.post('/api/me', cors(), async (req, res) => {
+=======
+app.post("/api/me", cors(), async (req, res) => {
+>>>>>>> skilled
   const newUser = {
     lastname: req.body.family_name,
     firstname: req.body.given_name,
     email: req.body.email,
-    sub: req.body.sub
-
-  }
+    sub: req.body.sub,
+  };
   //console.log(newUser);
 
-  const queryEmail = 'SELECT * FROM users WHERE email=$1 LIMIT 1';
-  const valuesEmail = [newUser.email]
+  const queryEmail = "SELECT * FROM users WHERE email=$1 LIMIT 1";
+  const valuesEmail = [newUser.email];
   const resultsEmail = await db.query(queryEmail, valuesEmail);
-  if(resultsEmail.rows[0]){
-    console.log(`Thank you ${resultsEmail.rows[0].firstname} for coming back`)
-  } else{
-  const query = 'INSERT INTO users(lastname, firstname, email, sub) VALUES($1, $2, $3, $4) RETURNING *'
-  const values = [newUser.lastname, newUser.firstname, newUser.email, newUser.sub]
-  const result = await db.query(query, values);
-  console.log(result.rows[0]);
-
+  if (resultsEmail.rows[0]) {
+    console.log(`Thank you ${resultsEmail.rows[0].firstname} for coming back`);
+  } else {
+    const query =
+      "INSERT INTO users(lastname, firstname, email, sub) VALUES($1, $2, $3, $4) RETURNING *";
+    const values = [
+      newUser.lastname,
+      newUser.firstname,
+      newUser.email,
+      newUser.sub,
+    ];
+    const result = await db.query(query, values);
+    console.log(result.rows[0]);
   }
-
 });
 
-
- app.listen(PORT, () => {
+app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
- });
+});

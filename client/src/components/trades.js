@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
-// import Form from "./form";
-import { API_URL } from "../constants";
+
+// import { API_URL } from "../constants";
 
 const Trades = () => {
   const [trades, SetTrades] = useState([]);
-  const [favorites, SetFavorites] = useState([]);
   // const [name, setName] = useState("");
   // const [link, setLink] = useState("");
   // const [content, setContent] = useState("");
@@ -15,7 +14,7 @@ const Trades = () => {
     SetTrades((trades) => [...trades, newTrade]);
   };
   const deleteTrade = async (deleteId) => {
-    await fetch(`${API_URL}/api/trade/${deleteId}`, {
+    await fetch(`/api/trade/${deleteId}`, {
       method: "DELETE",
     });
 
@@ -23,7 +22,7 @@ const Trades = () => {
     console.log(deleteId);
   };
   const favoriteTrade = async (postId) => {
-    await fetch(`${API_URL}/api/favorite/${postId}`, {
+    await fetch(`/api/favorite/${postId}`, {
       method: "POST",
     });
 
@@ -31,19 +30,8 @@ const Trades = () => {
     console.log(postId);
   };
 
-  // const editTrade = async () => {
-  //   await fetch(`${API_URL}/api/blog/${id}`, {
-  //     method: "PUT",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify({ title, blurb, content, img }),
-  //   });
-
-  //   await getBlog();
-  //   setId(-1); //that is the function you call when you click the edit button and are done editing
-  // };
-
   const getTrade = async () => {
-    const response = await fetch(`${API_URL}/api/trade`);
+    const response = await fetch(`/api/trade`);
     const trade = await response.json();
     SetTrades(trade);
   };
@@ -52,6 +40,8 @@ const Trades = () => {
     const favorite = await response.json();
     SetFavorites(favorite)
   }
+
+
 
   useEffect(() => {
     getTrade();
@@ -92,14 +82,14 @@ const Trades = () => {
                   >
                     Edit
                   </button> */}
-                  <button className="btn btn-danger">
+                  {/* <button className="btn btn-danger">
                     <span
                       className="material-symbols-outlined"
                       onClick={() => deleteTrade(trade.id)}
                     >
                       Delete
                     </span>
-                  </button>
+                  </button> */}
                   <br />
                   <button>
                 
@@ -114,56 +104,8 @@ const Trades = () => {
           );
         })}
       </ul>
-      {/* <div className={id === -1 ? "d-none" : "d-block"}>
-        <label htmlFor="edit-blog-name">Name</label>
-        <input
-          id="edit-blog-title"
-          type="text"
-          value={title}
-          onChange={(e) => {
-            setTitle(e.target.value);
-          }}
-        />{" "}
-        <br />
-        <br />
-        <label htmlFor="edit-blog-blurb">Blurb</label>
-        <input
-          id="edit-blog-blurb"
-          type="text"
-          value={blurb}
-          onChange={(e) => {
-            setBlurb(e.target.value);
-          }}
-        />{" "}
-        <br />
-        <br />
-        <label htmlFor="edit-blog-content">Content</label>
-        <input
-          id="edit-blog-content"
-          type="text"
-          value={content}
-          onChange={(e) => {
-            setContent(e.target.value);
-          }}
-        />{" "}
-        <br />
-        <br />
-        <label htmlFor="edit-blog-image">Image</label>
-        <input
-          id="edit-blog-image"
-          type="text"
-          value={img}
-          onChange={(e) => {
-            setImg(e.target.value);
-          }}
-        />{" "}
-        <br />
-        <br />
-        <button className="btn btn-primary" onClick={editBlog}>
-          Update User
-        </button>
-      </div> */}
-      {/* <Form addTrade={addTrade} /> */}
+ 
+     
     </section>
   );
 };
