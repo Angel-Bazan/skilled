@@ -77,14 +77,14 @@ const Trades = () => {
                   >
                     Edit
                   </button> */}
-                  <button className="btn btn-danger">
+                  {/* <button className="btn btn-danger">
                     <span
                       className="material-symbols-outlined"
                       onClick={() => deleteTrade(trade.id)}
                     >
                       Delete
                     </span>
-                  </button>
+                  </button> */}
                   <br />
                   <button>
                 
