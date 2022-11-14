@@ -3,7 +3,7 @@ services:
     plan: free
     type: web
     env: node
-    repo: https://github.com/Angel-Bazan/skilled
+    repo: https://github.com/Angel-Bazan/skilled 
     buildCommand: cd client && npm install && npm run build && cd ../server && npm install
     startCommand: cd server && node ./node_modules/db-migrate/bin/db-migrate up && node server.js
     envVars:
