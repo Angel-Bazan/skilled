@@ -43,14 +43,7 @@ app.get("/api/user", cors(), async (req, res) => {
   }
 });
 
-<<<<<<< HEAD
-app.get("/api/favorite/:id", cors(), async (req, res) => {
-  const userID = req.query.users_id;
-  const tradeID = req.params.id;
-  try {
-    const { rows: trades } = await db.query(
-      "SELECT users_id, trade_id FROM users_trades LEFT JOIN trades ON users_trades.trade_id = trades.id", [userID, tradeID]
-=======
+
 app.get("/api/favorite", cors(), async (req, res) => {
   const userID = req.query.users_id;
   console.log(userID)
@@ -58,7 +51,7 @@ app.get("/api/favorite", cors(), async (req, res) => {
     const { rows: trade_ids } = await db.query(
       "SELECT trades.id, trades.img, trades.name, trades.link FROM trades INNER JOIN users_trades ON trades.id=users_trades.trade_id WHERE users_trades.users_id = $1",
       [userID]
->>>>>>> skilled
+
     );
     res.send(trade_ids);
   } catch (e) {
