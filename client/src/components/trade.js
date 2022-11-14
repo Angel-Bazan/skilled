@@ -1,52 +1,48 @@
 import React from "react";
 
-const Trade = ({trades, isFavorite, onUpdate}) => {
+const Trade = ({ trades, isFavorite, onUpdate }) => {
+  const favoriteTrade = async (postId) => {
+    await fetch(`/api/favorite/${postId}`, {
+      method: "POST",
+    });
 
-    const favoriteTrade = async (postId) => {
-        await fetch(`/api/favorite/${postId}`, {
-          method: "POST",
-        });
-    
-        onUpdate()
-        console.log(postId);
-      };
+    onUpdate();
+    console.log(postId);
+  };
 
-      return (
-        <ul id="favorite" className="row justify-content-md-center list-unstyled">
-        {trades.map((trade) => (
-          <li key={trade.id} className="col col-sm-4 mb-3">
-            <div className="card" style={{ width: "18rem" }}>
-              <img src={trade.img} className="card-img-top" alt="..."></img>
-              <div className="card-body">
-                <br />
-                <strong>Name:</strong>
-                {trade.name}
-                <br />
-                <strong>Link:</strong>
-                {trade.link} <br />
-                <strong>Content:</strong>
-                {trade.content}
-                <br />
-                <strong>Colleges:</strong>
-                <br />
-                
-                <button>
-                  <span
-                    className="material-symbols-outlined"
-                    onClick={() => favoriteTrade(trade.id)}>
-                  
-                  {isFavorite ? 'favorite' : 'unfavorite'}
-                  </span>
-                </button>
-                
-                <br />
-              </div>
+  return (
+    <ul id="favorite" className="row justify-content-md-center list-unstyled">
+      {trades.map((trade) => (
+        <li key={trade.id} className="col col-sm-4 mb-3">
+          <div className="card" style={{ width: "18rem" }}>
+            <img src={trade.img} className="card-img-top" alt="..."></img>
+            <div className="card-body">
+              <br />
+              <strong>Name:</strong>
+              {trade.name}
+              <br />
+              <strong>Link:</strong>
+              {trade.link} <br />
+              <strong>Content:</strong>
+              {trade.content}
+              <br />
+              <strong>Colleges:</strong>
+              <br />
+              <button>
+                <span
+                  className="material-symbols-outlined"
+                  onClick={() => favoriteTrade(trade.id)}
+                >
+                  {isFavorite ? "favorite" : "unfavorite"}
+                </span>
+              </button>
+              <br />
             </div>
-          </li>
-        ))}
-        
-      </ul>
-      )
+          </div>
+        </li>
+      ))}
+    </ul>
+  );
 };
 
 export default Trade;

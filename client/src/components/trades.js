@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import Trade from "./trade";
 
-// import { API_URL } from "../constants";
-
 const Trades = () => {
   const [trades, SetTrades] = useState([]);
   
