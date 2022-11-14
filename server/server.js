@@ -124,11 +124,7 @@ app.delete("/api/trades/:id", async (req, res) => {
   }
 });
 
-<<<<<<< HEAD
-app.post('/api/me', cors(), async (req, res) => {
-=======
 app.post("/api/me", cors(), async (req, res) => {
->>>>>>> skilled
   const newUser = {
     lastname: req.body.family_name,
     firstname: req.body.given_name,
