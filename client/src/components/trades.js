@@ -5,11 +5,7 @@ import Trade from "./trade";
 
 const Trades = () => {
   const [trades, SetTrades] = useState([]);
-  // const [name, setName] = useState("");
-  // const [link, setLink] = useState("");
-  // const [content, setContent] = useState("");
-  // const [img, setImg] = useState("");
-  // const [id, setId] = useState(-1); //by default you are not editing anything so id -1;
+  
 
   const addTrade = (newTrade) => {
     SetTrades((trades) => [...trades, newTrade]);
