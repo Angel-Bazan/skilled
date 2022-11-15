@@ -1,5 +1,5 @@
 import React from "react";
-import AuthNav from './auth_files/auth-nav';
+import AuthNav from "./auth_files/auth-nav";
 
 const Navbar = ({ setView }) => {
   //setView is a prop and we are passing it
@@ -73,25 +73,19 @@ const Navbar = ({ setView }) => {
           id="home"
           role="tabpanel"
           aria-labelledby="home-tab"
-        >
-          
-        </div>
+        ></div>
         <div
           className="tab-pane fade show active"
           id="create"
           role="tabpanel"
           aria-labelledby="create-tab"
-        >
-          
-        </div>
+        ></div>
         <div
           className="tab-pane fade show active"
           id="favorites"
           role="tabpanel"
           aria-labelledby="favorites-tab"
-        >
-          
-        </div>
+        ></div>
       </div>
       <AuthNav />
     </div>

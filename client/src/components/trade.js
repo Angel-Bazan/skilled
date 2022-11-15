@@ -28,11 +28,8 @@ const Trade = ({ trades, isFavorite, onUpdate }) => {
               <br />
               <strong>Colleges:</strong>
               <br />
-              <button>
-                <span
-                  className="material-symbols-outlined"
-                  onClick={() => favoriteTrade(trade.id)}
-                >
+              <button className="btn btn-primary">
+                <span className=" " onClick={() => favoriteTrade(trade.id)}>
                   {isFavorite ? "favorite" : "unfavorite"}
                 </span>
               </button>
