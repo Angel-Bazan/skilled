@@ -1,14 +1,9 @@
 import { useState, useEffect } from "react";
-
-// import { API_URL } from "../constants";
+import Trade from "./trade";
 
 const Trades = () => {
   const [trades, SetTrades] = useState([]);
-  // const [name, setName] = useState("");
-  // const [link, setLink] = useState("");
-  // const [content, setContent] = useState("");
-  // const [img, setImg] = useState("");
-  // const [id, setId] = useState(-1); //by default you are not editing anything so id -1;
+  
 
   const addTrade = (newTrade) => {
     SetTrades((trades) => [...trades, newTrade]);
@@ -51,7 +46,7 @@ const Trades = () => {
   return (
     <section className="trade container">
       <h2 className="list-of-trades">List of Trades</h2>
-      <ul id="trade" className="row justify-content-md-center list-unstyled">
+      {/* <ul id="trade" className="row justify-content-md-center list-unstyled">
         {trades.map((trade, index) => {
           return (
             <li key={index} className="col col-sm-4 mb-3">
@@ -90,7 +85,7 @@ const Trades = () => {
                       Delete
                     </span>
                   </button> */}
-                  <br />
+                  {/* <br />
                   <button>
                 
                     <span className="material-symbols-outlined" onClick={() => favoriteTrade(trade.id)}>favorite</span>
@@ -103,9 +98,9 @@ const Trades = () => {
            
           );
         })}
-      </ul>
+      </ul> */} 
  
-     
+     <Trade trades={trades} isFavorite={true} onUpdate={getTrade} />
     </section>
   );
 };
