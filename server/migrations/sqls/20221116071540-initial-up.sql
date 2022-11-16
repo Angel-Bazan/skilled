@@ -42,12 +42,6 @@ INSERT INTO public.colleges (id, name, blurb) OVERRIDING SYSTEM VALUE VALUES (6,
 INSERT INTO public.colleges (id, name, blurb) OVERRIDING SYSTEM VALUE VALUES (7, 'Orange Coast College', NULL);
 INSERT INTO public.colleges (id, name, blurb) OVERRIDING SYSTEM VALUE VALUES (8, 'SaddleBack College', NULL);
 INSERT INTO public.colleges (id, name, blurb) OVERRIDING SYSTEM VALUE VALUES (9, 'Santiago Canyon College', NULL);
-
-
---
--- Data for Name: trades; Type: TABLE DATA; Schema: public; Owner: tpl522_14
---
-
 INSERT INTO public.trades (id, img, name, link) OVERRIDING SYSTEM VALUE VALUES (1, 'https://i.fbcd.co/products/resized/resized-750-500/4254b1ec65baa6f29e7618c6644d1373aec7710d1dc4c5fa221f1e81ae27419d.jpg', 'Automotive', 'https://sac.edu/AcademicProgs/');
 INSERT INTO public.trades (id, img, name, link) OVERRIDING SYSTEM VALUE VALUES (8, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2GGcSJNregNA32iKLBfoJfH0bpyaT_Hvnqw&usqp=CAU', 'Real Estate', NULL);
 INSERT INTO public.trades (id, img, name, link) OVERRIDING SYSTEM VALUE VALUES (4, 'https://images.squarespace-cdn.com/content/v1/5f15d0c7a609d31d8aedb37b/1595351644865-RZAYVSD191T8A2EYOBCD/FireTechInnovations_HeaderLogo.png', 'Fire Technology', NULL);
