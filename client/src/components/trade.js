@@ -22,11 +22,10 @@ const Trade = ({ trades, isFavorite, onUpdate }) => {
               {trade.name}
               <br />
               <strong>Link:</strong>
-              {trade.link} <br />
-              <strong>Content:</strong>
-              {trade.content}
-              <br />
+              <a target="_blank" href={trade.link}>Trade Video</a> <br />
+            
               <strong>Colleges:</strong>
+              {trade.Colleges}
               <br />
               <button className="btn btn-primary">
                 <span className=" " onClick={() => favoriteTrade(trade.id)}>
