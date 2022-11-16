@@ -90,13 +90,13 @@ INSERT INTO public.users_trades (id, users_id, trade_id) OVERRIDING SYSTEM VALUE
 INSERT INTO public.users_trades (id, users_id, trade_id) OVERRIDING SYSTEM VALUE VALUES (44, 3, 4);
 INSERT INTO public.users_trades (id, users_id, trade_id) OVERRIDING SYSTEM VALUE VALUES (45, 3, 1);
 
-SELECT pg_catalog.setval('public.colleges_id_seq', 9, true);
+-- SELECT pg_catalog.setval('public.colleges_id_seq', 9, true);
 
-SELECT pg_catalog.setval('public.trades_colleges_id_seq', 38, true);
+-- SELECT pg_catalog.setval('public.trades_colleges_id_seq', 38, true);
 
-SELECT pg_catalog.setval('public.trades_id_seq', 14, true);
+-- SELECT pg_catalog.setval('public.trades_id_seq', 14, true);
 
 
-SELECT pg_catalog.setval('public.users_college_id_seq', 45, true);
+-- SELECT pg_catalog.setval('public.users_college_id_seq', 45, true);
 
-SELECT pg_catalog.setval('public.users_id_seq', 4, true);
+-- SELECT pg_catalog.setval('public.users_id_seq', 4, true);
