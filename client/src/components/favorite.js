@@ -21,6 +21,7 @@ const Favorite = () => {
       </div>
       {/* {favorites.join(":")} */}
      
+     
       <Trade trades={trades} isFavorite={false} onUpdate={getFavorites}/>
     </div>
   );
