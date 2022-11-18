@@ -131,8 +131,11 @@ h2{
 }
 .logout{
   margin-right: 34px;
-  display:flex;
-
+  display: flex;
+}
+.username{
+  display: inline-block;
+  padding-top: 5px;
 }
 .name{
   padding-top: 5px;

@@ -1,4 +1,7 @@
-import React from "react";
+
+import { useState, useEffect } from "react";
+
+
 
 const Trade = ({ trades, isFavorite, onUpdate }) => {
   const favoriteTrade = async (postId) => {
@@ -42,3 +45,4 @@ const Trade = ({ trades, isFavorite, onUpdate }) => {
 };
 
 export default Trade;
+

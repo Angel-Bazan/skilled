@@ -9,15 +9,14 @@ const LogoutButton = () => {
   const [activeUser, setActiveUser] = useState([]);
 
   const getUser = async () => {
-    // const response = await fetch(`/api/user`);
-    // const user = await response.json();
     setActiveUser(user);
   };
 
   useEffect(() => {
     getUser();
     console.log(activeUser, "users");
-  }, []);
+
+  }, [user]);
 
   return (
     <div className="logout">
@@ -26,6 +25,7 @@ const LogoutButton = () => {
         <h5>Hello, {activeUser && activeUser.given_name}</h5>
       </div>
       <div className="logoutB">
+
       <button
         className="btn btn-danger btn-block"
         onClick={() =>

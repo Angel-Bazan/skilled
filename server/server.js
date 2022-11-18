@@ -43,6 +43,7 @@ app.get("/api/user", cors(), async (req, res) => {
   }
 });
 
+
 app.get("/api/favorite", cors(), async (req, res) => {
   const userID = req.query.users_id;
   console.log(userID)
@@ -50,6 +51,7 @@ app.get("/api/favorite", cors(), async (req, res) => {
     const { rows: trade_ids } = await db.query(
       "SELECT trades.id, trades.img, trades.name, trades.link, trades.colleges FROM trades INNER JOIN users_trades ON trades.id=users_trades.trade_id WHERE users_trades.users_id = $1",
       [userID]
+
     );
     res.send(trade_ids);
   } catch (e) {
