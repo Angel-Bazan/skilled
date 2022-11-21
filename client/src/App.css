@@ -1,20 +1,17 @@
 .App {
   text-align: center;
-
 }
-body{
+body {
   background: url(trade.png) no-repeat center center fixed;
   background-size: cover;
   height: 100%;
 }
-.navbar-container{
+.navbar-container {
   background-color: black;
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: white;
- 
-
 }
 
 .App-logo {
@@ -28,7 +25,6 @@ body{
   }
 }
 
-
 .App-link {
   color: #61dafb;
 }
@@ -41,66 +37,67 @@ body{
     transform: rotate(360deg);
   }
 }
-.card{
-  max-height:300px;
-  overflow:auto;
+.card {
+  max-height: 300px;
+  overflow: auto;
+  border-style: solid;
+  border-color: green;
+  border-width: medium;
+  border-radius: 10px;
 }
 
-.nav-ul{
+.nav-ul {
   display: flex;
   list-style: none;
   margin: 25px;
-  
 }
-.nav-li{
+.nav-li {
   font-size: 12px;
 }
 
-.nav-li a h2{
+.nav-li a h2 {
   display: block;
   color: white;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  
-  
 }
 
-.nav-li a h2:hover{
+.nav-li a h2:hover {
   background-color: black;
 }
-.navbar-btn--active{
+.navbar-btn--active {
   border-bottom: 3px solid #29b6f6;
-  transition: border-bottom .5s ease-in-out;
+  transition: border-bottom 0.5s ease-in-out;
 }
-.navbar-btn{
+.navbar-btn {
   width: 300px;
   display: block;
   margin: auto;
   cursor: pointer;
-  font-family: 'Architects Daughter', cursive;
-  transition: border-bottom .5s ease-in-out;
- 
+  font-family: "Architects Daughter", cursive;
+  transition: border-bottom 0.5s ease-in-out;
 }
 
-.home h2{
+.home h2 {
   color: #fff;
-    font-family: Signika,sans-serif;
-    font-size: 3rem;
-    margin-left: 10%;
-    text-align: left;
+  font-family: Signika, sans-serif;
+  font-size: 6em;
+  margin-left: 10%;
+  text-align: left;
 }
-h2{
-  font-family: 'Architects Daughter', cursive;
-  color:white
+h2 {
+  font-family: Signika, sans-serif;
+  color: white;
 }
-.topH2{
-  margin-bottom:0
+.topH2 {
+  margin-bottom: 0;
+  font-size: 2em;
 }
-.home{
+.home {
   margin-top: 15%;
 }
-.btnTrade{
+.btnTrade {
   left: 10%;
   padding-top: 2%;
   position: -webkit-sticky;
@@ -108,36 +105,41 @@ h2{
   top: 50%;
   width: 120px;
 }
-.quote{
+.quote {
   color: #fff;
-    font-family: Signika,sans-serif;
-    font-size: 1.5rem;
-    margin-left: 10%;
-    text-align: left;
-    width:40%;
+  font-family: Signika, sans-serif;
+  font-size: 1.5rem;
+  margin-left: 10%;
+  text-align: left;
+  width: 40%;
 }
-.btnTrade button{
+.btnTrade button {
   background-color: #0b5d3a;
   border-radius: 8px;
   color: #fff;
   cursor: pointer;
   font-size: 1rem;
-  height: 40px;
+  height: 75px;
   padding: 0.35rem;
   width: 140px;
+  font-size: 40px;
 }
-.login{
-  margin-right: 34px;
+.btn-primary {
+  background-color: #0b5d3a;
 }
-.logout{
-  margin-right: 34px;
-  display:flex;
 
+.login {
+  margin-right: 34px;
 }
-.name{
+.logout {
+  margin-right: 34px;
+  display: flex;
+}
+.name {
   padding-top: 5px;
+  padding-right: 15px;
 }
-.logoutB{
+.logoutB {
   display: inline-block;
 }
 fieldset {
@@ -154,12 +156,12 @@ form {
   margin: auto;
 }
 body {
-  background-color: #E3E9D9;
+  background-color: #e3e9d9;
 }
-label{
-  font-family: 'Architects Daughter', cursive;
+label {
+  font-family: "Architects Daughter", cursive;
 }
-.btn-danger{
+.btn-danger {
   margin-left: 15px;
 }
 .aboutText {
@@ -167,10 +169,24 @@ label{
   padding: 5%;
   border-radius: 25px;
   font-size: 1.75rem;
+  color: white;
 }
 
 .about {
   padding: 6%;
-  opacity: .90;
+  opacity: 0.9;
 }
-
+.list-of-trades {
+  padding: 25px 0px 25px 0px;
+  margin: 45px;
+}
+#favorite{
+  margin: 30px;
+}
+.favorite-h2{
+  padding: 15px 0px 15px 0px;
+  margin: 45px;
+}
+.line{
+  background: white;
+}

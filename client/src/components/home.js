@@ -29,7 +29,7 @@ const Home = ({setView}) => {
       </div>
       <div className="btnTrade">
         {" "}
-       <button onClick={()=>setView('trades')}>Trades</button>
+       <button className= "btn btn-primary" onClick={()=>setView('trades')}>Trades</button>
       </div>
     </div>
   );

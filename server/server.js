@@ -48,7 +48,7 @@ app.get("/api/favorite", cors(), async (req, res) => {
   console.log(userID)
   try {
     const { rows: trade_ids } = await db.query(
-      "SELECT trades.id, trades.img, trades.name, trades.link FROM trades INNER JOIN users_trades ON trades.id=users_trades.trade_id WHERE users_trades.users_id = $1",
+      "SELECT trades.id, trades.img, trades.name, trades.link, trades.colleges FROM trades INNER JOIN users_trades ON trades.id=users_trades.trade_id WHERE users_trades.users_id = $1",
       [userID]
     );
     res.send(trade_ids);
