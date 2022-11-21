@@ -27,7 +27,7 @@ const LogoutButton = () => {
       </div>
       <div className="logoutB">
       <button
-        className="btn btn-danger btn-block"
+        className="btn btn-primary btn-block"
         onClick={() =>
           logout({
             returnTo: window.location.origin,

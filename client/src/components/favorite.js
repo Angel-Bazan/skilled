@@ -17,12 +17,10 @@ const Favorite = () => {
   return (
     <div className="trades">
       <div>
-        <h2>Favorite Trades List</h2>
+        <h2 className="favorite-h2">Favorite Trades List</h2>
       </div>
-      {/* {favorites.join(":")} */}
-     
-     
-      <Trade trades={trades} isFavorite={false} onUpdate={getFavorites}/>
+
+      <Trade trades={trades} isFavorite={false} onUpdate={getFavorites} />
     </div>
   );
 };
