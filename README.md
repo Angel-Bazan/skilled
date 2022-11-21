@@ -69,9 +69,7 @@ This app helps Orange County students match their trade career interest to their
         <img src="https://user-images.githubusercontent.com/74997368/168980647-1690f9de-bf0e-4318-93cb-1b2ba3701ded.png" width="48" height="48" alt="Bootstrap" />
       <br>Bootstrap
     </td>
-    
-   
-    <td align="center" width="96"> 
+     <td align="center" width="96"> 
         <img src="https://user-images.githubusercontent.com/66194627/203178801-4b129b9d-3638-4734-b549-80be333b9a21.png" width="48" height="48" alt="Render" />
       <br>Render
     </td>
