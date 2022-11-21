@@ -43,6 +43,7 @@ body {
   border-style: solid;
   border-color: green;
   border-width: medium;
+  border-radius: 10px;
 }
 
 .nav-ul {
