@@ -1,5 +1,5 @@
 ### Your First Express and React App
-Create full stack apps with React and Express. Run your client, server and do a restart of your dump db to have a full-stack project working in minutes
+
 
 # Step by Step instructions - To use this project as your start point
 ### For create the whole project
