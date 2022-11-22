@@ -111,8 +111,24 @@ This app helps Orange County students match their trade career interest to their
 ### Installation 
 
 1. Clone the repo: 
+
    ```sh 
    https://github.com/Angel-Bazan/skilled
+   ```
+2. Install all NPM packages using this in the root directory:
+   ```sh
+   npm install
+   ```
+3. Database setup:
+   1. Copy the root example environment file
+
+   ```sh
+   cp .env.example .env
+   ```
+   2. You can choose to edit `.env` or just use as-is.
+   3. Run the following to setup the database with the seed file:
+   ```sh
+   npm run db:init
    ```
 
 
