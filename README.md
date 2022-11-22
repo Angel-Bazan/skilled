@@ -90,13 +90,10 @@ This app helps Orange County students match their trade career interest to their
 
   <tr>
     <td align="center" width="96">
-      <br>National Park Service
+      <br>Motivational quote
     </td>
     <td align="center" width="96" >
       <br>Auth0
-    </td>
-    <td align="center" width="96">
-      <br>GoogleMaps (stretch goal)
     </td>
   </tr>
 </table>
