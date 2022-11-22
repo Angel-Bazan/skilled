@@ -104,6 +104,17 @@ This app helps Orange County students match their trade career interest to their
 <div align="center"><img width="931" alt="Screen Shot 2022-10-24 at 9 43 46 PM" src="https://user-images.githubusercontent.com/66194627/203221432-753ae53b-a7f0-4513-9ba9-ce4459f119af.png">
 </div>
 
+### Database Model 
+<div align="center"><img width="1266" alt="Screen Shot 2022-10-24 at 9 45 54 PM" src="https://user-images.githubusercontent.com/66194627/203222037-716eb9e4-7386-4961-83c2-2e9c60e9f9c0.png">
+</div>. 
+
+### Installation 
+
+1. Clone the repo: 
+   ```sh 
+   https://github.com/Angel-Bazan/skilled
+   ```
+
 
 
 
