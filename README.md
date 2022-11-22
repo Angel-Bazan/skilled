@@ -76,6 +76,32 @@ This app helps Orange County students match their trade career interest to their
   </tr>
 </table>
 
+## APIs
+
+<table align="center">
+  <tr>
+    <td align="center" width="96">
+      <img src="https://user-images.githubusercontent.com/66194627/203183326-dda15781-7ddc-4b9c-8901-2c3025453626.png" width="48" height="48" alt="motivational quote-api" />
+    </td>
+    <td align="center" width="96">
+       <img src="https://user-images.githubusercontent.com/74997368/168984679-a7fa607e-2a9a-46c8-91a6-9a9e77501dbd.png" width="48" height="48" alt="auth0" />
+    </td>
+  
+
+  <tr>
+    <td align="center" width="96">
+      <br>National Park Service
+    </td>
+    <td align="center" width="96" >
+      <br>Auth0
+    </td>
+    <td align="center" width="96">
+      <br>GoogleMaps (stretch goal)
+    </td>
+  </tr>
+</table>
+
+
 ### Your First Express and React App
 
 
