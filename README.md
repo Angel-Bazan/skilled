@@ -131,6 +131,15 @@ This app helps Orange County students match their trade career interest to their
    npm run db:init
    ```
 
+## Testing
+#### Jest Testing
+
+To run tests on the terminal:
+- On client side run the following command:
+
+```sh
+   npm test
+   ```
 
 
 
