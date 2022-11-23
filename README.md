@@ -130,6 +130,19 @@ This app helps Orange County students match their trade career interest to their
    ```sh
    npm run db:init
    ```
+#### Set Up React client for `auth0`
+If you want to try it with Auth0, the frontend needs to be setup with the following:
+
+1. Copy the app's example environment file
+
+   ```sh
+   cp app/.env.example app/.env
+   ```
+
+2. The `.env` file allows the React app to use Auth0, and requires an Auth0 domain + client-id.
+   - These can be obtained by signing up for an Auth0 account and [Registering a Single-Page Web Application](https://auth0.com/docs/get-started) in order to get these values
+   - This [graphic](https://images.ctfassets.net/23aumh6u8s0i/1DyyZTcfbJHw577T6K2KZk/a8cabcec991c9ed33910a23836e53b76/auth0-application-settings) from [Auth0's guide](https://auth0.com/blog/complete-guide-to-react-user-authentication/#Connect-React-with-Auth0) may be helpful to locating them
+
 
 ## Testing
 #### Jest Testing
