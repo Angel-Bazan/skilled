@@ -153,3 +153,8 @@ To run tests on the terminal:
 ```sh
    npm test
    ```
+
+### Future Development 
+- Incorporate a search funtionality to search a specific trade in my different cards 
+- Add a college tab where it has all the information from all the colleges 
+- Add a contact info where you can contact different counselors for the trade program  
