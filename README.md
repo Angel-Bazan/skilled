@@ -19,7 +19,6 @@
   - [Style Guide](#style-guide)
   - - [Wireframe](#wireframe)
   - - [Data Model](#data-model)
-  - - [User Flow](#user-flow)
   - [Installation](#installation)
   - [Testing](#testing)
   - [Future Development](#future-development)
