@@ -58,7 +58,7 @@ app.get("/api/favorite", cors(), async (req, res) => {
 });
 
 app.get("/api/quote", (req, res) => {
-  const url = `https://motivational-quote-api.herokuapp.com/quotes/random`;
+  const url = `https://zenquotes.io/api/random`;
   fetch(url)
     .then((response) => response.json())
     .then((data) => {

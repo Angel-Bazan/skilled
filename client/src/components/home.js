@@ -4,13 +4,13 @@ import React, { useState, useEffect } from "react";
 
 
 const Home = ({setView}) => {
-  const [quote, setQuote] = useState({});
+  const [quote, setQuote] = useState('');
 
   const getloadData = async () => {
     const response = await fetch("/api/quote");
     const data = await response.json();
-    console.log(data.quote)
-    setQuote(data.quote);
+    console.log(data[0].q)
+    setQuote(data[0].q);
   };
 
   useEffect(() => {
@@ -25,7 +25,8 @@ const Home = ({setView}) => {
         <h2 className="topH2">Explore Trades</h2>
       </div>
       <div>
-        <h4 className="quote">{JSON.stringify(quote)}</h4>
+        <h4 className="quote">{quote}</h4>
+        
       </div>
       <div className="btnTrade">
         {" "}
